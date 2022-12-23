@@ -1,15 +1,24 @@
-import React, { useContext } from "react";
-import { View, StyleSheet, } from "react-native";
+import React, { useContext, useEffect } from "react";
+import { View, StyleSheet } from "react-native";
 
 import { Context as AuthContext } from "../context/AuthContext";
 import AuthForm from "../components/AuthForm";
 import NavLink from "../components/NavLink";
 
 const SignUpScreen = ({ navigation }) => {
-  const { state, signup, clearErrorMessage } = useContext(AuthContext);
-  
-  
-  
+  const { state, signup, clearErrorMessage, tryLocalSignin } =
+    useContext(AuthContext);
+
+  {
+    /************/
+  }
+  // useEffect(() => {
+  //   tryLocalSignin();
+  // }, []);
+  {
+    /************/
+  }
+
   React.useEffect(() => {
     const unsubscribe = navigation.addListener("blur", () => {
       clearErrorMessage();

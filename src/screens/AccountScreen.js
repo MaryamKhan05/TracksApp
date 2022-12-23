@@ -1,8 +1,24 @@
-import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import React, { useContext } from "react";
+import { Text, View, StyleSheet, SafeAreaView } from "react-native";
+import { Button } from "react-native-elements";
 
+
+import Spacer from "../components/Spacer";
+import { Context as AuthContext } from "../context/AuthContext";
 const AccountScreen = () => {
-  return <Text style={{ fontSize: 48 }}>AccountScreen Screen</Text>;
+const { signout } = useContext(AuthContext);
+
+  return (
+    <SafeAreaView forceInset={{ top:'always' }}>
+      <Text style={{ fontSize: 48 }}>AccountScreen Screen</Text>
+      <Spacer/>
+      <Button
+      title='Sign Out'
+      onPress={signout}
+      />
+      <Spacer/>
+    </SafeAreaView>
+  );
 };
 
 const styles = StyleSheet.create({});

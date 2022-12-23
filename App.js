@@ -22,16 +22,27 @@ import {
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-
 const App = () => {
   const { state } = useContext(AuthContext);
   return (
     <NavigationContainer>
       {state.token != null ? (
         <Tab.Navigator>
-          <Tab.Screen name="TrackListScreen" component={TrackListScreen} />
-          <Tab.Screen name="TrackCreateScreen" component={TrackCreateScreen} />
-          <Tab.Screen name="AccountScreen" component={AccountScreen} />
+          <Tab.Screen
+            options={{ headerShown: false }}
+            name="TrackListScreen"
+            component={TrackListScreen}
+          />
+          <Tab.Screen
+            options={{ headerShown: false }}
+            name="TrackCreateScreen"
+            component={TrackCreateScreen}
+          />
+          <Tab.Screen
+            options={{ headerShown: false }}
+            name="AccountScreen"
+            component={AccountScreen}
+          />
         </Tab.Navigator>
       ) : (
         <Stack.Navigator>
@@ -46,9 +57,10 @@ const App = () => {
             component={SignUpScreen}
           />
           <Stack.Screen
-          options={{ headerShown: false }}
-          name="SignIn" 
-          component={SigninScreen} />
+            options={{ headerShown: false }}
+            name="SignIn"
+            component={SigninScreen}
+          />
           <Stack.Screen name="TrackDetailScreen" component={DetailsScreen} />
         </Stack.Navigator>
       )}
