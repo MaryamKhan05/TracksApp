@@ -22,7 +22,6 @@ const authReducer = (state, action) => {
 
 const tryLocalSignin = (dispatch) => async () => {
   const token = await AsyncStorage.getItem("token");
-  // if (!token || token === null) navigate('SignUp')
   if (token) {
     dispatch({ type: "signin", payload: token });
     navigate("TrackListScreen");
@@ -54,7 +53,7 @@ const signup = (dispatch) => {
 const signin = (dispatch) => {
   return async ({ email, password }) => {
     try {
-      const response = await tracker.post("./signin", { email, password });
+      const response = await tracker.post("/signin", { email, password });
       await AsyncStorage.setItem("token", response.data.token);
       dispatch({ type: "signin", payload: response.data.token });
       navigate("TrackListScreen");

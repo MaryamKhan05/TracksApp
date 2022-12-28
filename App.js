@@ -1,6 +1,6 @@
 import "react-native-gesture-handler";
-import React, { useContext, useEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React, { useContext } from "react";
+import { StyleSheet } from "react-native";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -18,6 +18,8 @@ import {
   Provider as AuthProvider,
   Context as AuthContext,
 } from "./src/context/AuthContext";
+
+import { Provider as LocationProvider } from "./src/context/LocationContext";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -46,11 +48,11 @@ const App = () => {
         </Tab.Navigator>
       ) : (
         <Stack.Navigator>
-          <Stack.Screen
+          {/* <Stack.Screen
             options={{ headerShown: false }}
             name="LoadingScreen"
             component={LoadingScreen}
-          />
+          /> */}
           <Stack.Screen
             options={{ headerShown: false }}
             name="SignUp"
@@ -74,8 +76,10 @@ const MyApp = App;
 
 export default () => {
   return (
-    <AuthProvider>
-      <App />
-    </AuthProvider>
+    <LocationProvider>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </LocationProvider>
   );
 };

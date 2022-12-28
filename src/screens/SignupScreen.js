@@ -12,9 +12,9 @@ const SignUpScreen = ({ navigation }) => {
   {
     /************/
   }
-  // useEffect(() => {
-  //   tryLocalSignin();
-  // }, []);
+  useEffect(() => {
+    tryLocalSignin();
+  }, []);
   {
     /************/
   }
